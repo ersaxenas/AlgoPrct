@@ -1,30 +1,59 @@
 package com.prep.cci.arrayandstrings;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
 
-public class StringUniqueCharsTest extends TestCase {
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+public class StringUniqueCharsTest {
+	
 	StringUniqueChars testClass = new StringUniqueChars();
 
-	public StringUniqueCharsTest(String name) {
-		super(name);
+	@Before
+	public void setUp() throws Exception {
 	}
 
-	protected void setUp() throws Exception {
-		super.setUp();
+	@After
+	public void tearDown() throws Exception {
 	}
 
-	protected void tearDown() throws Exception {
-		super.tearDown();
-	}
-
+	@Test
 	public void testFindDuplicatesChars1() {
 		assertTrue("Unique chars check", testClass.findDuplicatesChars1("length"));
 		assertFalse("Duplicate char check", testClass.findDuplicatesChars1("seen"));
 	}
 
+	@Test
 	public void testFindDuplicatesChars2() {
 		assertTrue("Unique chars check", testClass.findDuplicatesChars2("length"));
 		assertFalse("Duplicate char check", testClass.findDuplicatesChars2("seen"));
+	}
+
+	@Test
+	public void testRemoveDuplicateChars() {
+		String str;
+		str = testClass.removeDuplicateChars1("Duplicatecharcheck");
+		assertTrue("Unique chars check", testClass.findDuplicatesChars2(str));
+		str = testClass.removeDuplicateChars1("abcd");
+		assertTrue("Unique chars check", testClass.findDuplicatesChars2(str));
+		str = testClass.removeDuplicateChars1("aaaa");
+		assertTrue("Unique chars check", testClass.findDuplicatesChars2(str));
+		str = testClass.removeDuplicateChars1("aaaabbb");
+		assertTrue("Unique chars check", testClass.findDuplicatesChars2(str));
+	}
+	
+	@Test
+	public void testRemoveDuplicateChars2() {
+		String str;
+		str = testClass.removeDuplicateChars2("Duplicatecharcheck");
+		assertTrue("Unique chars check", testClass.findDuplicatesChars2(str));
+		str = testClass.removeDuplicateChars2("abcd");
+		assertTrue("Unique chars check", testClass.findDuplicatesChars2(str));
+		str = testClass.removeDuplicateChars2("aaaa");
+		assertTrue("Unique chars check", testClass.findDuplicatesChars2(str));
+		str = testClass.removeDuplicateChars2("aaaabbb");
+		assertTrue("Unique chars check", testClass.findDuplicatesChars2(str));
 	}
 
 }

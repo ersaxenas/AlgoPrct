@@ -52,7 +52,12 @@ public class StringUniqueChars {
 		return true;
 	}
 	
-	public String removeDuplicateChars(String str) {
+	/**
+	 * Function removes duplicate chars from a string
+	 * @param str
+	 * @return String containing unique chars.
+	 */
+	public String removeDuplicateChars1(String str) {
 		assert (str != null):"Null input";
 		assert (str.length() < 2):"Input string is too short";
 		char []arr = str.toCharArray();
@@ -64,12 +69,32 @@ public class StringUniqueChars {
 				}
 			}
 			if(tail == j) {
-				arr[tail] = arr[j];
+				arr[tail] = arr[i];
 				tail++;
 			}
 		}
-		arr[tail] = 0;
-		return new String(arr);
+		return new String(Arrays.copyOf(arr, tail));
+	}
+	/**
+	 * Function removes duplicate chars from string. It uses addition space to remove track duplicates.
+	 * @param str
+	 * @return String containing unique chars.
+	 */
+	public String removeDuplicateChars2(String str) {
+		assert (str != null):"Null input";
+		assert (str.length() < 2):"Input string is too short";
+		char []arr = str.toCharArray();
+		int tail =0;
+		boolean chars[] = new boolean[256];
+		Arrays.fill(chars, false);
+		for(int i=0; i<arr.length; i++) {
+			if(!chars[arr[i]]) {
+				chars[arr[i]] = true;
+				arr[tail] = arr[i];
+				tail++;
+			}
+		}
+		return new String(Arrays.copyOf(arr, tail));
 	}
 	
 
