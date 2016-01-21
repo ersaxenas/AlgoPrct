@@ -23,18 +23,5 @@ public class RotationOfMatrix {
 	 		}
 	 	}
 	}
-	/**
-	 * Function prints NxN matrix on console.
-	 * @param arr
-	 */
-	public void printMatrix(Object[][] arr, int size) {
-		System.out.println("\n");
-		 for(int i=0; i<size; i++) {
-	    	  for(int j=0; j<size; j++) {
-	    		  System.out.print(" "+arr[i][j].toString()+" ");    		  
-	    	  }
-	    	  System.out.println("\n");
-	      }
-	}
 
 }

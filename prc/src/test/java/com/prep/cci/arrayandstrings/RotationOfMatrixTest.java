@@ -4,6 +4,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.prep.util.CollectionUtils;
+
 public class RotationOfMatrixTest {
 	RotationOfMatrix testClass = new RotationOfMatrix();
 	@Before
@@ -23,9 +25,9 @@ public class RotationOfMatrixTest {
 	    		  arr[i][j] = ""+ch++;    		  
 	    	  }
 	      }
-	      testClass.printMatrix(arr, 5);
+	      CollectionUtils.printMatrix(arr);
 	      testClass.rotate(arr, 5);
-	      testClass.printMatrix(arr,5);
+	      CollectionUtils.printMatrix(arr);
 	}
 
 }
