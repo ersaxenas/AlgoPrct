@@ -61,6 +61,7 @@ public class LinkListQstTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testremoveNthElementFromLast2() {
        LinkedList lst = new LinkedList();
        lst.add(new Integer(9));
@@ -75,6 +76,23 @@ public class LinkListQstTest {
        lst.printList();
        testClass.removeNthElementFromLast2(lst, 7);
        lst.printList();
+	}
+	
+	@Test
+	public void testsumNumber() {
+       LinkedList lst1 = new LinkedList();
+       lst1.add(new Integer(7));
+       lst1.add(new Integer(9));
+       lst1.add(new Integer(7));
+       LinkedList lst2 = new LinkedList();
+       lst2.add(new Integer(8));
+       lst2.add(new Integer(1));
+       lst2.add(new Integer(4));
+       lst2.add(new Integer(4));
+       
+       lst1.printList();
+       lst2.printList();
+       testClass.sumNumber(lst1, lst2);
 	}
 
 }

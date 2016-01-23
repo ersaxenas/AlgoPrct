@@ -40,20 +40,19 @@ public class LinkedList {
 		if (!isEmpty()) {
 			Node node = first;
 			Node prev = null;
+			Node tmp = null;
 			while (node != null) {
 				if (node.item.equals(elem)) {
-					if (prev != null) {
-						prev.next = node.next;
-						node.next = null;
-						result = true;
-						size--;
+					if (node.next == null) {
+						prev.item = node.item;
+						prev.next = null;
 					} else {
-						/* first element */
-						first = node.next;
-						node.next = null;
-						result = true;
-						size--;
+						tmp = node.next;
+						node.item = tmp.item;
+						node.next = tmp.next;
+						tmp.next = null;
 					}
+					size--;
 				}
 				prev = node;
 				node = node.next;
@@ -142,6 +141,7 @@ public class LinkedList {
 
 	/**
 	 * Function removes element at given index.
+	 * 
 	 * @param index
 	 * @return
 	 */
@@ -150,21 +150,19 @@ public class LinkedList {
 		int cnt = 1;
 		if (isNotEmpty()) {
 			Node node = first;
-			Node prev = null;
+			Node tmp = null, prev = null;
 			while (node != null) {
-				if (cnt == index ) {
-					if (prev != null) {
-						prev.next = node.next;
-						node.next = null;
-						result = true;
-						size--;
+				if (cnt == index) {
+					if (node.next == null) {
+						prev.item = node.item;
+						prev.next = null;
 					} else {
-						/* first element */
-						first = node.next;
-						node.next = null;
-						result = true;
-						size--;
+						tmp = node.next;
+						node.item = tmp.item;
+						node.next = tmp.next;
+						tmp.next = null;
 					}
+					size--;
 				}
 				prev = node;
 				node = node.next;
@@ -194,7 +192,7 @@ public class LinkedList {
 		this.last = last;
 	}
 
-	public class Node {
+	public static class Node {
 		private Object item;
 		private Node next;
 
