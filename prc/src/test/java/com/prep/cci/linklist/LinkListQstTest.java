@@ -79,6 +79,7 @@ public class LinkListQstTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testsumNumber() {
        LinkedList lst1 = new LinkedList();
        lst1.add(new Integer(7));
@@ -94,5 +95,21 @@ public class LinkListQstTest {
        lst2.printList();
        testClass.sumNumber(lst1, lst2);
 	}
+	
+	@Test
+	public void testFindStartOfCircularLinkedList() {
+       LinkedList lst = new LinkedList();
+       for(int i=1; i<=20; i++) {
+    	   lst.add(i);
+       }
+       LinkedList.Node x = lst.getFirst();
+       while(11 != (Integer)x.getItem()) {
+    	   x = x.getNext();
+       }
+       lst.getLast().setNext(x);
+                     
+       testClass.findStartOfCircularLinkedList(lst);
+	}
+	
 
 }
