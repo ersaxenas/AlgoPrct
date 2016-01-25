@@ -10,6 +10,7 @@ import org.junit.Test;
 import com.prep.cci.stackandqueue.StackQst.StackArrayDevideImpl;
 import com.prep.cci.stackandqueue.StackQst.StackArrayDevideImplSE;
 import com.prep.cci.stackandqueue.StackQst.StackOfStack;
+import com.prep.cci.stackandqueue.StackQst.TowerOfHanoi;
 
 public class StackQstTest {
 	StackQst testClass = new StackQst();
@@ -66,6 +67,7 @@ public class StackQstTest {
 	}
 
 	@Test
+	@Ignore
 	public void testStackOfStack() {
 		StackOfStack stack = new StackOfStack();
 		Random ran = new Random();
@@ -79,5 +81,13 @@ public class StackQstTest {
         System.out.println(stack.pop());
 		System.out.println("test finished");
 	}
+	
+	@Test
+	public void testTowerOfHanoi() {
+		TowerOfHanoi testClass = new TowerOfHanoi(4);
+		testClass.solve();
+		System.out.println("test finished");
+	}
+	
 
 }

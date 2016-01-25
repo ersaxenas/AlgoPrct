@@ -13,7 +13,7 @@ public class Stack {
 	
 	
 	public void push(final Object item) {
-		if(size != -1 && size >= maxSize) {
+		if(maxSize != -1 && size >= maxSize) {
 			System.out.println("Stack is full. System can't insert item '"+item+"'.");
 			throw new StackFullException();
 		}

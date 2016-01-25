@@ -211,5 +211,48 @@ public class StackQst {
 		}
 
 	}
+    /**
+     * Algorithm to solve tower of hanoi	
+     *
+     */
+	public static class TowerOfHanoi {
+		Stack stacks[] = new Stack[3];
+		int disks = 0;
+		
+		public TowerOfHanoi(int disks) {
+			for(int cnt=0;cnt<stacks.length; cnt++){
+				stacks[cnt] = new Stack();
+			}
+			for(int cnt=5;cnt>0; cnt--) {
+				stacks[0].push("disk"+cnt);
+			}
+			this.disks = disks;  
+		}
+		
+		public void solve() {
+         moveDisks(disks, stacks[0], stacks[2], stacks[1]);			
+		}
+		
+		/**
+		 * A = SOURCE
+		 * B = BUFFER = AUX
+		 * C = DESTINATION
+		 * @param disks
+		 */
+		private void moveDisks(int disks, Stack A, Stack C, Stack B) {
+			if(disks == 0) {
+				/*Move from source to destination*/
+				Object disk = A.pop();
+				C.push(disk);
+			} else {
+				moveDisks(disks -1, A, B, C);
+				/*Move from source to destination*/
+				Object disk = A.pop();
+				C.push(disk);
+				moveDisks(disks-1, B, C, A);
+			}
+		}
+		
+	}
 
 }
