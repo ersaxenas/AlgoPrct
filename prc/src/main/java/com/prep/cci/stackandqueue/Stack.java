@@ -62,6 +62,14 @@ public class Stack {
 		return last;
 	}
 	
+	public Object peek() {
+		if (first == null) {
+			return null;
+		}
+		Object item = first.getItem();
+		return item;
+	}
+	
 	public boolean isEmpty() {
 		return first == null;
 	}

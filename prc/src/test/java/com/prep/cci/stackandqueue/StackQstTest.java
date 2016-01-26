@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import com.prep.cci.stackandqueue.StackQst.SortedStack;
 import com.prep.cci.stackandqueue.StackQst.StackArrayDevideImpl;
 import com.prep.cci.stackandqueue.StackQst.StackArrayDevideImplSE;
 import com.prep.cci.stackandqueue.StackQst.StackOfStack;
@@ -83,9 +84,29 @@ public class StackQstTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testTowerOfHanoi() {
 		TowerOfHanoi testClass = new TowerOfHanoi(4);
 		testClass.solve();
+		System.out.println("test finished");
+	}
+	
+	@Test
+	public void testStackSort() {
+		SortedStack testClass = new SortedStack();
+		Stack stack = new Stack();
+		stack.push(7);
+		stack.push(5);
+		stack.push(8);
+		stack.push(4);
+		stack.push(9);
+		testClass.sortStack(stack);
+		testClass.push(7);
+		testClass.push(5);
+		testClass.push(8);
+		testClass.push(4);
+		testClass.push(9);
+		testClass.push(3);;
 		System.out.println("test finished");
 	}
 	

@@ -252,7 +252,61 @@ public class StackQst {
 				moveDisks(disks-1, B, C, A);
 			}
 		}
+	}
+	
+	public static class SortedStack {
+		Stack s1 = new Stack();
+		Stack s2 = new Stack();
+		
+		public Object pop() {
+			return s1.pop();
+		}
+		
+		public Object peek() {
+			return s1.peek();
+		}
+		
+		public void push(Object item) {
+			if(s1.isEmpty()) {
+				s1.push(item);
+			} else {
+				while(!s1.isEmpty()) {
+					Object top = s1.pop();
+					if(((Integer) item) >= ((Integer) top)) {
+						s1.push(item);
+						break;
+					}
+					else {
+                        s2.push(top);	
+                        if(s1.isEmpty()) {
+                        	s2.push(item);
+                        }
+					}
+				}
+				while(!s2.isEmpty()) {
+					s1.push(s2.pop());
+				}
+				
+			}
+		}
+		
+		public Stack sortStack(Stack st) {
+			Stack buf = new Stack();
+			Integer topOfSt = null;
+			Integer topOfBuf = null;
+			while(!st.isEmpty()) {
+				  topOfSt = (Integer) st.pop();
+				  while(!buf.isEmpty() &&(((Integer)buf.peek()) > topOfSt)) {
+					  topOfBuf = (Integer) buf.pop();
+					  st.push(topOfBuf);
+				  }
+				  buf.push(topOfSt);
+			}
+			return buf;
+		}
+		
 		
 	}
+	
 
 }
