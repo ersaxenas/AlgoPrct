@@ -253,7 +253,11 @@ public class StackQst {
 			}
 		}
 	}
-	
+	/**
+	 * Sort stack using other buffer stack. 
+	 * Implement such in such a way that it sorts elemets while inserting. 
+	 *
+	 */
 	public static class SortedStack {
 		Stack s1 = new Stack();
 		Stack s2 = new Stack();
@@ -289,7 +293,11 @@ public class StackQst {
 				
 			}
 		}
-		
+		/**
+		 * Function sorts given Stack.
+		 * @param st
+		 * @return
+		 */
 		public Stack sortStack(Stack st) {
 			Stack buf = new Stack();
 			Integer topOfSt = null;
