@@ -6,6 +6,7 @@ public class TreeNode<K extends Comparable<K>, V> {
 	V val;
 	TreeNode leftNode;
 	TreeNode rightNode;
+	TreeNode parent;
 	int count;
 
 	public TreeNode() {
@@ -59,5 +60,13 @@ public class TreeNode<K extends Comparable<K>, V> {
 
 	public void setCount(int count) {
 		this.count = count;
+	}
+
+	public TreeNode getParent() {
+		return parent;
+	}
+
+	public void setParent(TreeNode parent) {
+		this.parent = parent;
 	}
 }

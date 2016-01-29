@@ -106,15 +106,47 @@ public class TreeQst {
        }
 	}
 	/**
-	 * Given a binary search tree, design an algorithm which creates a linked list of all the nodes at each depth (eg, if you have a tree with depth D, you’ll have D linked lists).
+	 * Write an algorithm to find the ‘next’ node (e.g., in-order successor) of a given node in a binary search tree where each node has a link to its parent.
 	 * 
 	 */
 	
 	public static class BTSuccessorNode {
 
+		public TreeNode findSuccessorNode(TreeNode node) {
+			assert (node == null) :  "Node is null";
+			TreeNode successor = null;
+			TreeNode parent = null;
+			if(node.getParent() == null ) {
+				if(node.getRightNode() == null) {
+					return null; /*root and no node is greater then root*/	
+				}
+				else {
+					successor = node.getRightNode();
+				}
+			}
+			else {
+				parent = node.getParent();
+				successor = node;
+				while(successor.getParent() != null) {
+					  if(successor != parent.getLeftNode()) {
+						  break;
+					  }
+					  successor = parent;
+					  parent = successor.getParent();
+				}
+			}
+			return successor;
+		}
+		
 		
 		public TreeNode findLeftMostChild(TreeNode node) {
-    	   return null;
+			if(node == null) {
+				return null;
+			}
+			while(node.getLeftNode() != null) {
+				node = node.getLeftNode();
+			}
+    	   return node;
        }
 	}
 
