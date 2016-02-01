@@ -19,7 +19,7 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
 	 */
 	public void put(K key, V val) {
 		System.out.println("Inserting :("+key+","+val+")" );
-		root = put(root, key, val);
+		root = put(root, key, val,null);
 	}
 	/**
 	 * Function recursive lively adds a key and value to the tree.
@@ -29,19 +29,20 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
 	 * @param val
 	 * @return root of the tree.
 	 */
-	private TreeNode put(TreeNode root,K key, V val) {
+	private TreeNode put(TreeNode root,K key, V val, TreeNode parent) {
 		TreeNode x = root;
         if(x == null) {
         	TreeNode node = new TreeNode(key,val);
         	node.count = 1;
+        	node.parent = parent;
         	return node;
         }
 		int cmp = key.compareTo((K) x.getKey());
 		if(cmp < 0) {
-			x.setLeftNode(put(x.getLeftNode(), key, val));
+			x.setLeftNode(put(x.getLeftNode(), key, val, x));
 		}
 		else if (cmp > 0) {
-			x.setRightNode(put(x.getRightNode(), key, val));
+			x.setRightNode(put(x.getRightNode(), key, val,x));
 		}
 		else {
 			x.setVal(val);
@@ -68,6 +69,29 @@ public class BinarySearchTree<K extends Comparable<K>, V> {
 		   }
 		   else {
 			   return (V) x.getVal();
+		   }
+		}
+		return null;
+	}
+	
+	/**
+	 * Function searches in the tree for the key and returns the TreeNode if key is found
+	 * in the tree.
+	 * @param key
+	 * @return TreeNode  or null.
+	 */
+	public TreeNode getNode(K key) {
+		TreeNode x = root;
+		while(x != null) {
+		   int cmp = key.compareTo((K) x.getKey());
+		   if(cmp < 0) {
+			x = x.getLeftNode();   
+		   }
+		   else if(cmp > 0) {
+		    x = x.getRightNode();
+		   }
+		   else {
+			   return x;
 		   }
 		}
 		return null;

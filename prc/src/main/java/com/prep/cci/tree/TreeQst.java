@@ -121,21 +121,26 @@ public class TreeQst {
 					return null; /*root and no node is greater then root*/	
 				}
 				else {
-					successor = node.getRightNode();
+					return findLeftMostChild(node.getRightNode());
 				}
 			}
 			else {
+				/*go to right*/
+				if(node.getRightNode() != null) {
+					return findLeftMostChild(node.getRightNode());
+				}
+				/*go to parent and check left child*/
 				parent = node.getParent();
 				successor = node;
 				while(successor.getParent() != null) {
-					  if(successor != parent.getLeftNode()) {
+					  if(successor == parent.getLeftNode()) {
 						  break;
 					  }
 					  successor = parent;
 					  parent = successor.getParent();
 				}
 			}
-			return successor;
+			return parent;
 		}
 		
 		

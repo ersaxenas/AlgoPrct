@@ -49,11 +49,6 @@ public class TreeNode<K extends Comparable<K>, V> {
 		this.rightNode = rightNode;
 	}
 
-	@Override
-	public String toString() {
-		return "Node [key=" + key + ", val=" + val + "]";
-	}
-
 	public int getCount() {
 		return count;
 	}
@@ -68,5 +63,10 @@ public class TreeNode<K extends Comparable<K>, V> {
 
 	public void setParent(TreeNode parent) {
 		this.parent = parent;
+	}
+
+	@Override
+	public String toString() {
+		return "TreeNode [key=" + key + ", val=" + val + ", parent=" + ((parent !=null)?parent.getKey(): "null") + "]";
 	}
 }
