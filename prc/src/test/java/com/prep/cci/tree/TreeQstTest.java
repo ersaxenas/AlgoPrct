@@ -1,5 +1,7 @@
 package com.prep.cci.tree;
 
+import java.util.ArrayList;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -8,6 +10,7 @@ import org.junit.Test;
 import com.prep.cci.tree.TreeQst.BTFromArray;
 import com.prep.cci.tree.TreeQst.BTNodesFetch;
 import com.prep.cci.tree.TreeQst.BTSuccessorNode;
+import com.prep.cci.tree.TreeQst.BTSumUpToValue;
 import com.prep.cci.tree.TreeQst.BalanceTreeCheck;
 
 public class TreeQstTest {
@@ -80,6 +83,7 @@ public class TreeQstTest {
 		System.out.println("Test finished.");
 	}
 	@Test
+	@Ignore
 	public void testBTSuccessorNode() {
 		BTSuccessorNode testClass = new BTSuccessorNode();
 		BinarySearchTree<Integer, String> tree = new BinarySearchTree<Integer, String>();
@@ -101,6 +105,24 @@ public class TreeQstTest {
 		System.out.println("10 -> "+testClass.findSuccessorNode(tree.getNode(10)));
 		System.out.println("17 -> "+testClass.findSuccessorNode(tree.getNode(17)));
 		System.out.println("19 -> "+testClass.findSuccessorNode(tree.getNode(19)));
+		System.out.println("Test finished.");
+	}
+	@Test
+	public void testBTSumUpToValue() {
+		BTSumUpToValue testClass = new BTSumUpToValue();
+		BinarySearchTree<Integer, String> tree = new BinarySearchTree<Integer, String>();
+		tree.put(20, "20");
+		tree.put(22, "22");
+		tree.put(10, "10");
+		tree.put(5, "5");
+		tree.put(15, "15");
+		tree.put(17, "17");
+		tree.put(19, "19");
+		tree.put(11, "11");
+		tree.put(3, "3");
+		tree.put(7, "7");
+		tree.put(21, "21");
+		testClass.findNodesWithSum(tree.getRoot(), 45, new ArrayList<Integer>(), 0);
 		System.out.println("Test finished.");
 	}
 
