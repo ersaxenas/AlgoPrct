@@ -252,36 +252,5 @@ public class TreeQst {
 
 	}
 	
-	public class CommonParent {
-		
-		/*approach 1*/
-		public TreeNode findCommonParent1(TreeNode root, TreeNode a, TreeNode b) {
-			assert(a==b):"Nodes are same";
-			/*if both the node exists in the left of the root.*/
-			if(findNode(root.getLeftNode(), a) && findNode(root.getLeftNode(),b)) {
-				return findCommonParent1(root.getLeftNode(), a, b);
-			}
-			/*if both the node exists in the right of the root.*/
-			if(findNode(root.getRightNode(), a) && findNode(root.getRightNode(),b)) {
-				return findCommonParent1(root.getRightNode(), a, b);
-			}
-			return root;
-		}
-		/*check if node is child of the give node*/
-		private boolean findNode(TreeNode root, TreeNode a) {
-			if(root == null) {
-				return false;
-			}
-			if(root == a) {
-				return true;
-			}
-			return findNode(root.getLeftNode(),a) || findNode(root.getRightNode(), a); 
-		}
-		
-		
-		
-	}
-	
-	
 
 }
