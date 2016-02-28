@@ -1,4 +1,4 @@
-package com.prep.cci.geekforgeek;
+package com.prep.geekforgeek;
 
 import java.util.ArrayList;
 
