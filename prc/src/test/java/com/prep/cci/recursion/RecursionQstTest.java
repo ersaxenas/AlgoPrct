@@ -10,6 +10,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class RecursionQstTest {
+	RecursionQst testClass = new RecursionQst();
 
 	@Before
 	public void setUp() throws Exception {
@@ -34,7 +35,6 @@ public class RecursionQstTest {
 	@Test
 	@Ignore
 	public void testSubsets() {
-		RecursionQst testClass = new RecursionQst();
 	      ArrayList<Integer> lst = new ArrayList<Integer>();
 	      lst.add(1);
 	      lst.add(2);
@@ -45,14 +45,17 @@ public class RecursionQstTest {
 	@Test
 	@Ignore
 	public void testGetAnagrams() {
-      RecursionQst testClass = new RecursionQst();
       System.out.println(testClass.getAnagrams("abcd")); 
 	}
 	
 	@Test
-	public void printPar() {
-      RecursionQst testClass = new RecursionQst();
+	@Ignore
+	public void testPrintPar() {
       testClass.printPar(2); 
+	}
+	@Test
+	public void testGetDenom() {
+      System.out.println(testClass.getDenom(12, 10));
 	}
 
 }
