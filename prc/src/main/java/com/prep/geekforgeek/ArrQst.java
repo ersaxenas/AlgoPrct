@@ -1,6 +1,7 @@
 package com.prep.geekforgeek;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class ArrQst {
 
@@ -33,22 +34,56 @@ public class ArrQst {
 	 * 
 	 */
 	public void countIncreasingSubArrays(int arr[]) {
-		int cnt=0;
-		int len=1;
-         for(int i=0; i<=arr.length-1; i++) {
-        	 if((i+1<=arr.length-1) && (arr[i+1]>=arr[i])) { /*increasing so continue ..*/
-        		 len++;
-        		 continue;
-        	 }
-        	 else {/*calculate count for increasing sequence*/
-        		cnt =  cnt + ((len*(len-1))/2);
-        		len=1;
-        	 }
-         }
-         if(len>1) {
-        	 cnt =  cnt + (len*((len-1)/2));
-         }
-         System.out.println("Count:"+cnt);
+		int cnt = 0;
+		int len = 1;
+		for (int i = 0; i <= arr.length - 1; i++) {
+			if ((i + 1 <= arr.length - 1) && (arr[i + 1] >= arr[i])) { /* increasing so continue .. */
+				len++;
+				continue;
+			} else {/* calculate count for increasing sequence */
+				cnt = cnt + ((len * (len - 1)) / 2);
+				len = 1;
+			}
+		}
+		if (len > 1) {
+			cnt = cnt + (len * ((len - 1) / 2));
+		}
+		System.out.println("Count:" + cnt);
 	}
 
+	/**
+	 * Given a pattern containing only I’s and D’s. I for increasing and D for decreasing. Devise an algorithm to print the minimum number following that pattern. Digits from 1-9
+	 * and digits can’t repeat.
+	 * Examples:
+	 * Input: D Output: 21 
+	 * Input: I Output: 12 
+	 * Input: DD Output: 321 
+	 * Input: II Output: 123 
+	 * Input: DIDI Output: 21435 
+	 * Input: IIDDD Output: 126543 
+	 * Input: DDIDDIID Output: 321654798
+	 */              
+	public void genSeq1(String strSeq){
+		char arr[] = strSeq.toCharArray();
+		StringBuilder resultSeq = new StringBuilder();
+		int max = 1;
+		Stack<Integer> stack = new Stack<Integer>();
+		stack.push(max);
+		for (int cnt = 0; cnt < arr.length; cnt++) {
+			max++;
+			if(arr[cnt] == 'I') {
+				while(!stack.isEmpty()) {
+					resultSeq.append(stack.pop());
+				}
+				stack.push(max);
+			}
+			else {
+				stack.push(max);
+			}
+		}
+		while(!stack.isEmpty()) {
+			resultSeq.append(stack.pop());
+		}
+		System.out.println(resultSeq);
+	}
 }
