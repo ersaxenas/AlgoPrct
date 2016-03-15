@@ -1,6 +1,7 @@
 package com.prep.geekforgeek;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Stack;
 
 public class ArrQst {
@@ -29,7 +30,7 @@ public class ArrQst {
 	}
 
 	/**
-	 * Count Strictly Increasing Subarrays: An Efficient Solution can count subarrays in O(n) time. The idea is based on fact that a sorted sunarray of length ‘len’ adds
+	 * Count Strictly Increasing Subarrays: An Efficient Solution can count subarrays in O(n) time. The idea is based on fact that a sorted sunarray of length â€˜lenâ€™ adds
 	 * len*(len-1)/2 to result. For example, {10, 20, 30, 40} adds 6 to the result.
 	 * 
 	 */
@@ -52,8 +53,8 @@ public class ArrQst {
 	}
 
 	/**
-	 * Given a pattern containing only I’s and D’s. I for increasing and D for decreasing. Devise an algorithm to print the minimum number following that pattern. Digits from 1-9
-	 * and digits can’t repeat.
+	 * Given a pattern containing only Iâ€™s and Dâ€™s. I for increasing and D for decreasing. Devise an algorithm to print the minimum number following that pattern. Digits from 1-9
+	 * and digits canâ€™t repeat.
 	 * Examples:
 	 * Input: D Output: 21 
 	 * Input: I Output: 12 
@@ -86,4 +87,71 @@ public class ArrQst {
 		}
 		System.out.println(resultSeq);
 	}
+
+	/**
+	 * We are given two sorted array. We need to merge these two arrays such that the initial numbers (after complete sorting) are in the first array and the remaining numbers are
+	 * in the second array. Extra space allowed in O(1).
+	 * 
+	 * Example:
+	 * 
+	 * Input: ar1[] = {1, 5, 9, 10, 15, 20}; ar2[] = {2, 3, 8, 13}; Output: ar1[] = {1, 2, 3, 5, 8, 9} ar2[] = {10, 13, 15, 20}
+	 */
+	public void mergeSortedArrays(Integer arr1[], Integer arr2[]){
+		int l1,l2;
+		for(int i=arr2.length-1; i>=0; i--) {
+			l2 = arr2[i];
+			l1 = arr1[arr1.length-1];
+			if(l1 > l2) {
+				arr1[arr1.length-1] = l2;
+				arr2[i] = l1;
+				sortLastElement(arr1);
+			}
+		}
+		System.out.println(Arrays.asList(arr1).toString());
+		System.out.println(Arrays.asList(arr2).toString());
+	}
+	private void sortLastElement(Integer arr[]) {
+		int last = arr[arr.length-1];
+		for(int i=arr.length-1; i>=0; i--) {
+			if(arr[i]>last) {
+				arr[arr.length-1] = arr[i];
+				arr[i] = last;
+				break;
+			}
+		}
+	}
+
+	/**
+	 * Given two binary arrays arr1[] and arr2[] of same size n. Find length of the longest common span (i, j) where j >= i such that arr1[i] + arr1[i+1] + .. + arr1[j] = arr2[i] +
+	 * arr2[i+1] + + arr2[j].
+	 * 
+	 * Expected time complexity is Î˜(n).
+	 * 
+	 * Examples:
+	 * 
+	 * Input: arr1[] = {0, 1, 0, 0, 0, 0}; arr2[] = {1, 0, 1, 0, 0, 1}; Output: 4 The longest span with same sum is from index 1 to 4.
+	 * 
+	 * Input: arr1[] = {0, 1, 0, 1, 1, 1, 1}; arr2[] = {1, 1, 1, 1, 1, 0, 1}; Output: 6 The longest span with same sum is from index 1 to 6.
+	 * 
+	 * Input: arr1[] = {0, 0, 0}; arr2[] = {1, 1, 1}; Output: 0
+	 * 
+	 * Input: arr1[] = {0, 0, 1, 0}; arr2[] = {1, 1, 1, 1}; Output: 1
+	 */
+	public void longestSum(Integer arr1[], Integer arr2[]) {
+		int maxLen = 0,start=0,end=0;
+		for(int i=0; i<arr1.length; i++) {
+			int sum1=0, sum2=0;
+			for(int j=i;j<arr2.length;j++) {
+				sum1 = sum1+arr1[j];
+				sum2 = sum2+arr2[j];
+				if((sum1==sum2)&&((j-i+1)>maxLen)) {
+					maxLen = (j-i+1);
+					start=i;
+					end=j;
+				}
+			}
+		}
+		System.out.println("Start:"+start+", end:"+end+", max length"+maxLen);
+	}
+	
 }
